@@ -2,7 +2,7 @@
 
 import chalkAnimation from "chalk-animation";
 
-import { sleep, logError, getAString } from "./src/utils.js";
+import { sleep, logError, getAString, randomNum } from "./src/utils.js";
 import { askCredentials, askOperation, askToContinue } from "./src/prompts.js";
 import {
   logBalance,
@@ -13,7 +13,7 @@ import {
 } from "./src/tasks.js";
 
 let userCredentials: { userId: string; userPin: number };
-let accountBalance = 0;
+let accountBalance = randomNum(100, 1000);
 
 async function welcome() {
   const beautifyStr = getAString(45, "*");
@@ -76,7 +76,6 @@ async function setUserCredentials() {
     userCredentials = await askCredentials();
   } catch (error) {
     logError(error);
-    await setUserCredentials();
   }
 }
 

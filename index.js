@@ -1,10 +1,10 @@
 #! /usr/bin/env node
 import chalkAnimation from "chalk-animation";
-import { sleep, logError, getAString } from "./src/utils.js";
+import { sleep, logError, getAString, randomNum } from "./src/utils.js";
 import { askCredentials, askOperation, askToContinue } from "./src/prompts.js";
 import { logBalance, depositCash, withdrawCash, Operations, transferCash, } from "./src/tasks.js";
 let userCredentials;
-let accountBalance = 0;
+let accountBalance = randomNum(100, 1000);
 async function welcome() {
     const beautifyStr = getAString(45, "*");
     const rainbowTitle = chalkAnimation.rainbow(`\n${beautifyStr}
@@ -56,7 +56,6 @@ async function setUserCredentials() {
     }
     catch (error) {
         logError(error);
-        await setUserCredentials();
     }
 }
 await welcome();

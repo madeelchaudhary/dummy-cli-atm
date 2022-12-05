@@ -7,22 +7,25 @@ async function askCredentials() {
       name: "user_id",
       type: "input",
       message: "Enter your Id:",
+      validate(input) {
+        if (!input) {
+          return "Your Id is not correct. Enter your Id again.";
+        }
+        return true;
+      },
     },
     {
       name: "user_pin",
       type: "password",
       message: "Enter your 4 digits secret pin(Number):",
+      validate(input) {
+        if (!input || isNaN(+input) || input.length !== 4) {
+          return "Pin should be 4 digits. Enter your pin again.";
+        }
+        return true;
+      },
     },
   ]);
-
-  if (
-    !answers.user_id ||
-    !answers.user_pin ||
-    isNaN(+answers.user_pin) ||
-    answers.user_pin.length !== 4
-  ) {
-    throw "Please enter valid details!";
-  }
 
   return {
     userId: answers.user_id,
@@ -48,7 +51,7 @@ async function askAmount(customMessage: string) {
   });
 
   if (isNaN(answers.num)) {
-    throw "Please enter a valid number.";
+    throw "You entered invalid amount!";
   }
   return answers.num;
 }
