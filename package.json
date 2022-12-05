@@ -9,7 +9,7 @@
   },
   "bin": "./index.js",
   "repository": {
-    "url": "https://github.com/madeelchaudhary/guess-the-number",
+    "url": "https://github.com/madeelchaudhary/dummy-cli-atm",
     "type": "git"
   },
   "keywords": [],
