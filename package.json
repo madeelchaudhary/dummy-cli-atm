@@ -1,6 +1,6 @@
 {
   "name": "cli-atm",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple dummy ATM like application to play on CLI",
   "main": "index.js",
   "type": "module",
